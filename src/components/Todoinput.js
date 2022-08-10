@@ -13,35 +13,74 @@ const itemevent = (event) =>{
 });
 setinput("");
 };
+const handlekeypress = (event) =>{
+  if(event.key === 'Enter'){
+    setinput("");
+    setitems((oldvalue)=>{
+      return[...oldvalue, input]
+  })
+  }
+}
+// const counter = () => {
+//   const items = items.filter(checkbox=>
+//     !checkbox.checked)
+//     const count = 
+//     document.getElementById('todosleft');
+//     const counterString = items.length
+//     === 1 ? 'item' : 'items'
+//     count.innerText = `${items.length}
+//     ${counterString} left`
+
+// }
 return  <>
 <div className='main'>
+{/* <input type="checkbox" onChange={itemevent} value={setinput}></input> */}
         <div className='center'>
         <h1 className='heading'>TODO</h1>
       <div className='full'>
-        <input type="text" className='todo' placeholder='Create new todo...'  value={input} onChange={item} >
-
+        <input type="text" className='todo' placeholder='Create new todo...'  value={input} onChange={item} onKeyPress={handlekeypress}>
+        
         </input>
         <button id='button' onClick={itemevent}> + </button>
       </div>
       
-
-
       
+       
        <div className='list'>
         <ol>
 
         {/* <li>{input}</li> */}
         
-        { items.map( (itemvalue) =>{
-        return <li>{itemvalue}</li>
+        { items.map( (itemvalue, index) =>{
+          
+      //   return (<li>{itemvalue} 
+      //  <div >
+      //   <input type="checkbox" className='checkbox'></input>
+      //  </div>
+      //   </li>
+      //   )
+        return(
+       
+        <div key={index} className='item'>
+          <input value={itemvalue} type="checkbox" className='checkbox'></input>
+          <span>{itemvalue}</span>
         
+        </div>
         
+       
+        )
 }
        
         )
         
         }
         </ol>
+        <div className='items' >
+        <p id='todosleft'>items left  {items.length}</p> 
+       
+   
+        </div>
+       
        </div>
       {/* <div className='checkbox'>
         <input type="checkbox" className='input'></input>
