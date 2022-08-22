@@ -1,0 +1,22 @@
+.all {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.completed {
+  margin-top: 15px;
+}
+
+.active {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.clear_all {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.button {
+  display: flex;
+  flex-direction: row;
+}

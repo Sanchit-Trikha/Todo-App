@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Todolist from "./todolist";
+import Button from "./Button";
 import "./Todonput.css";
-// import "./todolist";
-import "./Todo"
+// import "./Button";
+import "./Todo";
 import TODO from "./Todo";
 
 function Input(props) {
-
   const [input, setinput] = useState("");
   // const handlesubmit = e => {
   //   e.preventdefalit();
@@ -20,33 +19,33 @@ function Input(props) {
   // }
   const item = (event) => {
     setinput(event.target.value);
-  }
+  };
   const [items, setitems] = useState([]);
   const itemevent = (event) => {
-    event.preventDefalit();
-
     setitems([
-      ...items, { text: input, completed: false, id: Math.random() * 100 }
-
+      ...items,
+      { text: input, completed: false, id: Math.random() * 100 },
     ]);
-
     setinput("");
-
+    event.preventDefalit();
   };
   const handlekeypress = (event) => {
-    if (event.key === 'Enter') {
-
+    if (event.key === "Enter") {
       setitems([
-        ...items, { text: input, completed: false, id: Math.random() * 100 }])
+        ...items,
+        { text: input, completed: false, id: Math.random() * 100 },
+      ]);
       setinput("");
     }
-
-  }
+  };
   const Allhandle = (event) => {
-    console.log(items)
-    return [items]
+    console.log(items);
+    return [items];
+  };
+  const deletehandle = () => {
+    setitems(items.filter((el) => el.id !== item.id));
+  };
 
-  }
   // const completehandle = () => {
   //   setitems(
   //     items.map((item) => {
@@ -62,57 +61,51 @@ function Input(props) {
   //   )
   // }
 
-
   return (
-    <div className='center'>
-
-
-      <div className='full'  >
-        <input type="text" className='todo' placeholder='Create new todo...' value={input} onChange={item} onKeyPress={handlekeypress} >
-        </input>
-        <button id='button1' onClick={itemevent} > + </button>
+    <div className="center">
+      <div className="full">
+        <input
+          type="text"
+          className="todo"
+          placeholder="Create new todo..."
+          value={input}
+          onChange={item}
+          onKeyPress={handlekeypress}
+        ></input>
+        <button
+          id="button1"
+          onClick={itemevent}
+          type="submit"
+          disabled={!input}
+        >
+          +
+        </button>
       </div>
       <ul className="itemvalue">
-
-        {items.map(item => {
+        {items.map((item) => {
           return (
-            <ul key={item.id} className="map"
-            >
-
-              <TODO text={item.text}  setitems={setitems} items={items} />
+            <ul key={item.id} className="map">
+              <TODO text={item.text} setitems={setitems} items={items} />
             </ul>
-          )
+          );
         })}
       </ul>
-      <div className='filter'>
-        <div className='itemsleft'>
+      <div className="filter">
+        <div className="itemsleft">
           {items.filter((item) => !item.items).length === 0 ? (
-            <p >All tasks completed</p>
+            <p>All tasks completed</p>
           ) : (
-            <p >
-              You have {items.filter((item) => !item.items).length} pending tasks
+            <p>
+              You have {items.filter((item) => !item.items).length} pending
+              tasks
             </p>
           )}
 
-          <div className='all'>
-            <a class="filter-active" href="#/active" onClick={Allhandle}>All</a>
-          </div>
-          <div className='completed'>
-            <a class="filter-active" href="#/active" >Completed</a>
-          </div>
-          <div className=' active'>
-            <a class="filter-active" href="#/active">Active</a>
-          </div>
-          <div className='clear_all'><a class="filter-active" href="#/active">Clear all</a>
-          </div>
-
+          <Button allhandle={Allhandle} deletehandle={deletehandle} />
         </div>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default Input;
-
-

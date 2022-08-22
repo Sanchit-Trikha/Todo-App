@@ -1,2 +1,10 @@
-
-
+.TODO {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.box {
+  width: 5%;
+  margin-right: 20px;
+  background-color: rgb(88, 87, 87);
+}
