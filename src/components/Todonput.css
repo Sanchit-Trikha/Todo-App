@@ -1,66 +1,79 @@
+.itemsleft {
+  border: 2px solid;
+  width: 34%;
+  margin-left: 33%;
+  background-color: rgb(88, 87, 87);
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
 
 
-.itemsleft{
-    border: 2px solid;
-    width: 34%;
-    margin-left: 33%;
-    
-    background-color:rgb(88, 87, 87) ;
-  
-    display: flex;
-    
-    justify-content: center;
-    justify-content: space-between;
-    
-      
-  }
-  .all{
-   margin-top: 15px;
-  }
-  .completed{
-    margin-top: 15px;
-  }
-  .active{
-    margin-top: 15px;
-  }
-  .clear_all{
-    margin-top: 15px;
-  }
-  .full{
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-  .todo{
-    
-    margin-top: 10%;
-    padding: 1rem;
-    width: 31%;
-    background-color: rgb(88, 87, 87);
-    font-size: medium;
-  }
-  #button1{
-    width: min-content;
-    border: 2px ;
-    position: absolute;
-    transform: translate(790%, 480%);
-    font-weight: bolder;
-    font-size: x-large;
-    background-color: rgb(88, 87, 87);
-    color: black;
-    }
-    .heading{
-      display: flex;
-      justify-content: center;
-     
-     }
-     .map{
+}
+
+.all {
+  margin-top: 15px;
+}
+
+.completed {
+  margin-top: 15px;
+}
+
+.active {
+  margin-top: 15px;
+}
+
+.clear_all {
+  margin-top: 15px;
+}
+
+.full {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.todo {
+
+  margin-top: 10%;
+  padding: 1rem;
+  width: 31%;
+  background-color: rgb(88, 87, 87);
+  font-size: medium;
+}
+
+#button1 {
+  width: min-content;
+  border: 2px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bolder;
+  font-size: x-large;
+  background-color: rgb(88, 87, 87);
+  color: black;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+
+}
+
+/* .map{
       border: 2px solid;
       display: flex;
       flex-direction: column;
       
-     }
-     .itemvalue{
-      display: flex;
-      justify-content: center;
-     }
+     } */
+.itemvalue {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map {
+  border: 2px solid;
+  width: 32%;
+  margin-right: 30px;
+  font-size: 220%;
+}

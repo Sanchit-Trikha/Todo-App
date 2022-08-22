@@ -1,9 +1,18 @@
-import React from 'react'
-import Todonput from "./Todonput"
-function todolist() {
-  return (
-    <div>todolist</div>
-  )
-}
+// import React from 'react'
+// import TODO from './Todo'
+// function Todolist({items})
+//  {
 
-export default todolist
+//   return (
+         
+//     <div>  
+//       {items.map( item =>(
+//         <TODO />
+//       ))}
+//     </div>
+
+          
+//   )
+// }
+
+// export default Todolist
