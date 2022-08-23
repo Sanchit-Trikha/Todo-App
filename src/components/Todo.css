@@ -3,8 +3,12 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-.box {
+/* .box {
   width: 5%;
   margin-right: 20px;
   background-color: rgb(88, 87, 87);
+} */
+input[type="checkbox"]:checked + .todo-item{
+text-decoration: line-through;
+color: rgb(164, 161, 161);
 }

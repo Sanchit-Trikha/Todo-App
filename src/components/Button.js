@@ -1,27 +1,28 @@
 import React from "react";
 import "./Button.css";
-function Button(Allhandle, deletehandle) {
+function Button({Allhandle, deletehandle}) {
+  console.log(deletehandle,"deleteHandle");
   return (
     <div className="button">
       <div className="all">
-        <a class="filter-active" href="#/active" onClick={Allhandle}>
+        <button class="filter-active" href="#/active" onClick={Allhandle}>
           All
-        </a>
+        </button>
       </div>
       <div className="completed">
-        <a class="filter-active" href="#/active">
+        <button class="filter-active" href="#/active">
           Completed
-        </a>
+        </button>
       </div>
       <div className=" active">
-        <a class="filter-active" href="#/active">
+        <button class="filter-active" href="#/active">
           Active
-        </a>
+        </button>
       </div>
       <div className="clear_all">
-        <a class="filter-active" href="#/active" onClick={deletehandle}>
+        <button class="filter-active" onClick={deletehandle}>
           Clear all
-        </a>
+        </button>
       </div>
     </div>
   );

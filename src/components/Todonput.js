@@ -42,9 +42,12 @@ function Input(props) {
     console.log(items);
     return [items];
   };
-  const deletehandle = () => {
-    setitems(items.filter((el) => el.id !== item.id));
-  };
+  function deletehandle() {
+    // const removeitem = items.filter((item)=>{
+    //   return item.id !== items.id;
+    // })
+    setitems([]);
+  }
 
   // const completehandle = () => {
   //   setitems(
@@ -60,6 +63,7 @@ function Input(props) {
   //     })
   //   )
   // }
+  console.log(items,"items");
 
   return (
     <div className="center">
@@ -85,7 +89,7 @@ function Input(props) {
         {items.map((item) => {
           return (
             <ul key={item.id} className="map">
-              <TODO text={item.text} setitems={setitems} items={items} />
+              <TODO text={item.text} setitems={setitems} uniqueKey={item.id} items={items} />
             </ul>
           );
         })}
