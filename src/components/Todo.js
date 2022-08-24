@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./Todo.css";
-function TODO({ text, setitems, items,uniqueKey }) {
-  const [isChecked, setisChecked] = useState(false)
+function TODO({ text, setitems, items, uniqueKey }) {
+  const [isChecked, setisChecked] = useState(false);
   const completehandle = () => {
-    setisChecked((rightValue)=>!rightValue);
-    //items traverse, unique match uniqueKey, if match item.completed = !item.completed; 
-    items.forEach((item)=>{
-      if(item.id===uniqueKey){
-        item.completed=!item.completed;
+    setisChecked((rightValue) => !rightValue);
+    //items traverse, unique match uniqueKey, if match item.completed = !item.completed;
+    items.forEach((item) => {
+      if (item.id === uniqueKey) {
+        item.completed = !item.completed;
       }
     });
-
 
     setitems(
       items.map((item) => {
@@ -24,12 +23,20 @@ function TODO({ text, setitems, items,uniqueKey }) {
       })
     );
   };
-  // ={`todo-item ${items.completed ? "completed": ""}`}
+
   return (
     <div className="list">
       <div className="TODO">
-       <ul className="todo-item"> {text}</ul>
-        <input type="checkbox" value={isChecked} onChange={completehandle} className="box" />
+        <ul className="todo-item">
+          {" "}
+          {text}
+        </ul>
+        <input
+          type="checkbox"
+          value={isChecked}
+          onChange={completehandle}
+          className="box"
+        />
       </div>
     </div>
   );

@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import "./Todonput.css";
-// import "./Button";
 import "./Todo";
 import TODO from "./Todo";
 
 function Input(props) {
   const [input, setinput] = useState("");
-  // const handlesubmit = e => {
-  //   e.preventdefalit();
-
-  //   props.onsubmit({
-  //     id: Math.floor(Math.random() * 100),
-  //     text: input
-  //   });
-  //   setinput("");
-  //   console.log(handlesubmit)
-  // }
   const item = (event) => {
     setinput(event.target.value);
   };
@@ -38,33 +27,27 @@ function Input(props) {
       setinput("");
     }
   };
-  const Allhandle = (event) => {
-    console.log(items);
-    return [items];
+  const [status, setstatus] = useState("all");
+  const [filteredtodos, setfilteredtodos] = useState([]);
+  const filterhandler = () => {
+    switch (status) {
+      case "Completed":
+        setfilteredtodos(items.filter((item) => item.completed === true));
+        break;
+      case "Active":
+        setfilteredtodos(items.filter((item) => item.completed === false));
+        break;
+      default:
+        setfilteredtodos(items);
+        break;
+    }
   };
+  useEffect(() => {
+    filterhandler();
+  });
   function deletehandle() {
-    // const removeitem = items.filter((item)=>{
-    //   return item.id !== items.id;
-    // })
     setitems([]);
   }
-
-  // const completehandle = () => {
-  //   setitems(
-  //     items.map((item) => {
-  //       if (item.id === items.id) {
-  //         return {
-  //           ...item,
-  //           completed: !item.completed
-  //         };
-  //       }
-  //       return item;
-
-  //     })
-  //   )
-  // }
-  console.log(items,"items");
-
   return (
     <div className="center">
       <div className="full">
@@ -86,10 +69,15 @@ function Input(props) {
         </button>
       </div>
       <ul className="itemvalue">
-        {items.map((item) => {
+        {filteredtodos.map((item) => {
           return (
             <ul key={item.id} className="map">
-              <TODO text={item.text} setitems={setitems} uniqueKey={item.id} items={items} />
+              <TODO
+                text={item.text}
+                setitems={setitems}
+                uniqueKey={item.id}
+                items={items}
+              />
             </ul>
           );
         })}
@@ -105,7 +93,7 @@ function Input(props) {
             </p>
           )}
 
-          <Button allhandle={Allhandle} deletehandle={deletehandle} />
+          <Button setstatus={setstatus} deletehandle={deletehandle} />
         </div>
       </div>
     </div>
