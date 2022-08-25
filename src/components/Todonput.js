@@ -16,7 +16,7 @@ function Input(props) {
       { text: input, completed: false, id: Math.random() * 100 },
     ]);
     setinput("");
-    event.preventDefalit();
+    event.preventDefault();
   };
   const handlekeypress = (event) => {
     if (event.key === "Enter") {
@@ -45,6 +45,7 @@ function Input(props) {
   useEffect(() => {
     filterhandler();
   });
+  const [isChecked, setisChecked] = useState(false);
   function deletehandle() {
     setitems([]);
   }
@@ -77,6 +78,8 @@ function Input(props) {
                 setitems={setitems}
                 uniqueKey={item.id}
                 items={items}
+                isChecked={isChecked}
+                setisChecked={setisChecked}
               />
             </ul>
           );

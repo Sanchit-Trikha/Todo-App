@@ -1,7 +1,6 @@
 import React from "react";
 import "./Button.css";
 function Button({ deletehandle, setstatus }) {
-  // console.log(deletehandle,"deleteHandle");
   const statushandler = (e) => {
     setstatus(e.target.value);
   };

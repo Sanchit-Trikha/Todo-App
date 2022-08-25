@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Todo.css";
-function TODO({ text, setitems, items, uniqueKey }) {
-  const [isChecked, setisChecked] = useState(false);
+function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
+  
   const completehandle = () => {
     setisChecked((rightValue) => !rightValue);
-    //items traverse, unique match uniqueKey, if match item.completed = !item.completed;
     items.forEach((item) => {
       if (item.id === uniqueKey) {
         item.completed = !item.completed;
@@ -23,6 +22,7 @@ function TODO({ text, setitems, items, uniqueKey }) {
       })
     );
   };
+  
 
   return (
     <div className="list">
