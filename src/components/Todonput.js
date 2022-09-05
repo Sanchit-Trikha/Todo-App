@@ -49,6 +49,7 @@ function Input(props) {
   function deletehandle() {
     setitems([]);
   }
+
   return (
     <div className="center">
       <div className="full">
@@ -91,7 +92,7 @@ function Input(props) {
             <p>All tasks completed</p>
           ) : (
             <p>
-              You have {items.filter((item) => !item.items).length} pending
+              You have {items.filter((item) => !item.completed).length} pending
               tasks
             </p>
           )}

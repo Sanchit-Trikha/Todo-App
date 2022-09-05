@@ -1,7 +1,6 @@
 import React from "react";
 import "./Todo.css";
 function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
-  
   const completehandle = () => {
     setisChecked((rightValue) => !rightValue);
     items.forEach((item) => {
@@ -9,7 +8,6 @@ function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
         item.completed = !item.completed;
       }
     });
-
     setitems(
       items.map((item) => {
         if (item.id === items.id) {
@@ -22,15 +20,11 @@ function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
       })
     );
   };
-  
 
   return (
     <div className="list">
       <div className="TODO">
-        <ul className="todo-item">
-          {" "}
-          {text}
-        </ul>
+        <ul className="todo-item">{text}</ul>
         <input
           type="checkbox"
           value={isChecked}

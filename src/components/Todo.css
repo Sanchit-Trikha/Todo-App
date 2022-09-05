@@ -8,7 +8,3 @@
   margin-right: 20px;
   background-color: rgb(88, 87, 87);
 } */
-input[type="checkbox"]:checked + ul{
-text-decoration: line-through;
-color: rgb(164, 161, 161);
-}
