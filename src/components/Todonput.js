@@ -32,19 +32,18 @@ function Input(props) {
   const filterhandler = () => {
     switch (status) {
       case "Completed":
-        setfilteredtodos(items.filter((item) => item.completed === true));
+        setfilteredtodos(items.filter((item) => item.completed === true),);
         break;
       case "Active":
-        setfilteredtodos(items.filter((item) => item.completed === false));
+        setfilteredtodos(items.filter((item) => item.completed === false),);
         break;
       default:
         setfilteredtodos(items);
         break;
-    }
-  };
-  useEffect(() => {
-    filterhandler();
-  });
+    }};
+    useEffect(() => {
+      filterhandler();
+    }, [items, status]);
   const [isChecked, setisChecked] = useState(false);
   function deletehandle() {
     setitems([]);
@@ -71,6 +70,7 @@ function Input(props) {
         </button>
       </div>
       <ul className="itemvalue">
+      {/* filteredtodos */}
         {filteredtodos.map((item) => {
           return (
             <ul key={item.id} className="map">
@@ -97,7 +97,8 @@ function Input(props) {
             </p>
           )}
 
-          <Button setstatus={setstatus} deletehandle={deletehandle} />
+          <Button  deletehandle={deletehandle}          setstatus={setstatus}
+/>
         </div>
       </div>
     </div>

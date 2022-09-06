@@ -3,6 +3,9 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
+ input[type=checkbox]:checked + .TODO{
+  background-color: black;
+}
 /* .box {
   width: 5%;
   margin-right: 20px;

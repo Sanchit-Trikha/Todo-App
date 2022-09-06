@@ -7,7 +7,8 @@ function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
       if (item.id === uniqueKey) {
         item.completed = !item.completed;
       }
-    });
+    },
+    );
     setitems(
       items.map((item) => {
         if (item.id === items.id) {
