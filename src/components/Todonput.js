@@ -1,19 +1,39 @@
 import React, { useEffect, useState } from "react";
+// import { useSort } from '@table-library/react-table-library/sort';
 import Button from "./Button";
 import "./Todonput.css";
 import "./Todo";
 import TODO from "./Todo";
 
 function Input(props) {
+//   const [order, setorder] = useState("ASC")
+//   const sorting =(index)=>{
+//     if(order === "ASC") {
+//       const sorted = [...items].sort((a,b)=>
+//       a[index].toLowerCase() > b[index].toLowerCase() ? 1: -1
+//       );
+//       setitems(sorted);
+//       setorder("DSC")
+//     }
+//       if(order === "DSC") {
+//         const sorted = [...items].sort((a,b)=>
+//         a[index].toLowerCase() < b[index].toLowerCase() ? 1: -1
+//         );
+//         setitems(sorted);
+//         setorder("ASC")
+//       }
+// }
   const [input, setinput] = useState("");
   const item = (event) => {
     setinput(event.target.value);
   };
+  // eslint-disable-next-line no-use-before-define
+  // const [Date, setDate] = useState(new Date());
   const [items, setitems] = useState([]);
   const itemevent = (event) => {
     setitems([
       ...items,
-      { text: input, completed: false, id: Math.random() * 100 },
+      { text: input, completed: false, id: Math.random() * 100, Date: new Date() },
     ]);
     setinput("");
     event.preventDefault();
@@ -22,14 +42,16 @@ function Input(props) {
     if (event.key === "Enter") {
       setitems([
         ...items,
-        { text: input, completed: false, id: Math.random() * 100 },
+        { text: input, completed: false, id: Math.random() * 100, Date: new Date().toISOString() },
       ]);
       setinput("");
     }
   };
+  //set in acending and decending order todo items accorting to time
+  
   const [status, setstatus] = useState("all");
   const [filteredtodos, setfilteredtodos] = useState([]);
-  console.log(filteredtodos,items,"filter and items")
+  // console.log(filteredtodos,items,"filter and items")
   const filterhandler = () => {
     switch (status) {
       case "Completed":
@@ -50,10 +72,10 @@ function Input(props) {
   function deletehandle() {
     setitems([]);
   }
-
   return (
     <div className="center">
       <div className="full">
+        <button >sort</button>
         <input
           type="text"
           className="todo"
@@ -82,10 +104,12 @@ function Input(props) {
                 items={items}
                 isChecked={item.completed}
                 setisChecked={setisChecked}
+                DateAndTime={item.Date}
               />
+               <div className="valDate"> {item.Date}</div>
             </ul>
           );
-        })}
+         })} 
       </ul>
       <div className="filter">
         <div className="itemsleft">

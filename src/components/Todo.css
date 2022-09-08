@@ -1,5 +1,10 @@
 .TODO {
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: row-reverse;
-  justify-content: flex-end;
+}
+.date{
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
 }

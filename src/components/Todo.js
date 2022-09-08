@@ -1,6 +1,6 @@
 import React from "react";
 import "./Todo.css";
-function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
+function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked, DateAndTime }) {
   const completehandle = () => {
     setisChecked((rightValue) => !rightValue);
     items.forEach((item) => {
@@ -20,17 +20,21 @@ function TODO({ text, setitems, items, uniqueKey, isChecked, setisChecked }) {
       })
     );
   };
-  console.log(isChecked, "ischecked", uniqueKey);
+  // console.log(DateAndTime, "date")
+
+  // console.log(isChecked, "ischecked", uniqueKey);
   return (
     <div className="list"> 
-      <div className="TODO">
+      <div className="TODO">       
+      {/* <div className="date">{DateAndTime}</div> */}
         <ul className="todo-item">{text}</ul>
         <input
           type="checkbox"
           defaultChecked={isChecked}
           onChange={completehandle}
           className="box"
-        ></input>
+        >
+        </input>
       </div>
     </div>
   );

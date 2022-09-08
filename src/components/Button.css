@@ -29,3 +29,8 @@ button{
 button:hover{
   color: rgb(38, 38, 242);
 }
+input[type=date]{
+  width: 100px;
+  margin-top: 10%;
+  height: 100px;
+}
