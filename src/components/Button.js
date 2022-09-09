@@ -1,11 +1,11 @@
 import React from "react";
 import "./Button.css";
-import Input from "./Todonput";
+// import Input from "./Todonput";
 function Button({ deletehandle, setstatus }) {
   const statushandler = (e) => {
     setstatus(e.target.value);
   };
-  return (
+    return (
     <div className="button">
       <div className="all">
         <button class="filter-active" onClick={statushandler} value="All">
@@ -25,6 +25,11 @@ function Button({ deletehandle, setstatus }) {
       <div className="clear_all">
         <button class="filter-active" onClick={deletehandle}>
           Clear all
+        </button>
+      </div>
+      <div className="Date">
+        <button class="filter-active" onClick={statushandler} value="Date">
+          Date
         </button>
       </div>
     </div>

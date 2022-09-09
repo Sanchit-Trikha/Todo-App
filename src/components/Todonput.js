@@ -1,57 +1,58 @@
 import React, { useEffect, useState } from "react";
-// import { useSort } from '@table-library/react-table-library/sort';
 import Button from "./Button";
 import "./Todonput.css";
 import "./Todo";
 import TODO from "./Todo";
 
 function Input(props) {
-//   const [order, setorder] = useState("ASC")
-//   const sorting =(index)=>{
-//     if(order === "ASC") {
-//       const sorted = [...items].sort((a,b)=>
-//       a[index].toLowerCase() > b[index].toLowerCase() ? 1: -1
-//       );
-//       setitems(sorted);
-//       setorder("DSC")
-//     }
-//       if(order === "DSC") {
-//         const sorted = [...items].sort((a,b)=>
-//         a[index].toLowerCase() < b[index].toLowerCase() ? 1: -1
-//         );
-//         setitems(sorted);
-//         setorder("ASC")
-//       }
-// }
+  const [isChecked, setisChecked] = useState(false);
+  const [status, setstatus] = useState("all");
+  const [filteredtodos, setfilteredtodos] = useState([]);
+  const [sortingAscending, setSortingAscending] = useState(true);
   const [input, setinput] = useState("");
+  const [items, setitems] = useState([]);
   const item = (event) => {
     setinput(event.target.value);
   };
-  // eslint-disable-next-line no-use-before-define
-  // const [Date, setDate] = useState(new Date());
-  const [items, setitems] = useState([]);
   const itemevent = (event) => {
     setitems([
       ...items,
-      { text: input, completed: false, id: Math.random() * 100, Date: new Date() },
+      {
+        text: input,
+        completed: false,
+        id: Math.random() * 100,
+        Date: new Date().toISOString(),
+      },
     ]);
+    
+   
     setinput("");
     event.preventDefault();
   };
   const handlekeypress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && input.trim()!=="" ) {
       setitems([
         ...items,
-        { text: input, completed: false, id: Math.random() * 100, Date: new Date().toISOString() },
+        {
+          text: input,
+          // disabled: !input,
+          completed: false,
+          id: Math.random() * 100,
+          Date: new Date().toISOString(),
+        }
       ]);
+      // if (input === !input){
+      //   (event.key === "Enter" && event.preventDefault() )
+      // }
+      // if (input===""){
+      //   event.preventDefault()
+      // }
+      // if(input.trim() === ""){
+      //   return input (false)
+      // }
       setinput("");
     }
   };
-  //set in acending and decending order todo items accorting to time
-  
-  const [status, setstatus] = useState("all");
-  const [filteredtodos, setfilteredtodos] = useState([]);
-  // console.log(filteredtodos,items,"filter and items")
   const filterhandler = () => {
     switch (status) {
       case "Completed":
@@ -60,6 +61,13 @@ function Input(props) {
       case "Active":
         setfilteredtodos(items.filter((item) => item.completed === false));
         break;
+      case "Date":
+        setfilteredtodos(
+          items.sort((a, b) => {
+            return new Date(a).getTime() - new Date(b).getTime();
+          })
+        );
+        break;
       default:
         setfilteredtodos(items);
         break;
@@ -67,15 +75,24 @@ function Input(props) {
   };
   useEffect(() => {
     filterhandler();
-  }, [items,status]);
-  const [isChecked, setisChecked] = useState(false);
+  }, [items, status]);
+
   function deletehandle() {
     setitems([]);
   }
+  function onSelectionChange(e) {
+    const sortDirection = e.target.value;
+    const copyArray = [...items];
+
+    copyArray.sort((a, b) => {
+      return sortDirection === "0" ? a.id - b.id : b.id - a.id;
+    });
+    setitems(copyArray);
+  }
+
   return (
     <div className="center">
       <div className="full">
-        <button >sort</button>
         <input
           type="text"
           className="todo"
@@ -91,7 +108,7 @@ function Input(props) {
           disabled={!input}
         >
           +
-        </button> 
+        </button>
       </div>
       <ul className="itemvalue">
         {filteredtodos.map((item) => {
@@ -106,10 +123,10 @@ function Input(props) {
                 setisChecked={setisChecked}
                 DateAndTime={item.Date}
               />
-               <div className="valDate"> {item.Date}</div>
+              <div className="valDate"> {item.Date}</div>
             </ul>
           );
-         })} 
+        })}
       </ul>
       <div className="filter">
         <div className="itemsleft">
@@ -123,6 +140,11 @@ function Input(props) {
           )}
 
           <Button deletehandle={deletehandle} setstatus={setstatus} />
+          <select  onChange={onSelectionChange}>
+          <option>none</option>
+          <option value={0}>Acending</option>
+          <option value={1}>Decending</option>
+        </select>
         </div>
       </div>
     </div>
